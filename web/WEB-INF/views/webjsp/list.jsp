@@ -1,5 +1,4 @@
-<%@ page import="java.util.List" %>
-<%@ page import="entity.Book" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -13,28 +12,26 @@
 </head>
 <body>
     <div class="container">
+        <div class="well">
+
+            <h1>Welcome,${account.username}</h1>
+        </div>
         <div class="container-fluid">
             <a href="/new" class="btn bg-primary">新增图书</a>
         </div>
 
-        <%
-            String searchValue = (String) request.getAttribute("searchValue");
-            searchValue = searchValue == null ? "" : searchValue;
-        %>
 
         <div class="well">
             <form method="get">
                 <div class="form-group">
                     <label for="search">搜索</label>
-                    <input type="text" class="form-control" name="searchValue" id="search" value="<%=searchValue%>">
+                    <input type="text" class="form-control" name="searchValue" id="search" value="${searchValue}">
                     <button class="btn btn-primary">Search</button>
                 </div>
             </form>
         </div>
 
-        <%
-            List<Book> bookList = (List<Book>) request.getAttribute("bookList");
-        %>
+
         <table class="table">
             <thead>
                 <tr>
@@ -44,26 +41,28 @@
                     <th>出版社</th>
                     <th>价格</th>
                     <th>类别</th>
+                    <th>库存数量</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
-                <%
-                    for(Book book : bookList){
-                %>
-                <tr>
-                    <td><%=book.getBisbn()%></td>
-                    <td><%=book.getBname()%></td>
-                    <td><%=book.getBauthor()%></td>
-                    <td><%=book.getBpublisher()%></td>
-                    <td><%=book.getBprice()%></td>
-                    <td><%=book.getBcategory()%></td>
-                    <td>
-                        <a href="/update?isbn=<%=book.getBisbn()%>">修改</a>
-                        <a href="javascript:;" rel="<%=book.getBisbn()%>" class="delete">删除</a>
-                    </td>
-                </tr>
-                <%}%>
+
+                <c:forEach items="${bookList}" var="book">
+                    <tr>
+                        <td>${book.bisbn}</td>
+                        <td>${book.bname}</td>
+                        <td>${book.bauthor}</td>
+                        <td>${book.bpublisher}</td>
+                        <td>${book.bprice}</td>
+                        <td>${book.bcategory}</td>
+                        <td>${book.bnum}</td>
+                        <td>
+                            <a href="/update?isbn=${book.bisbn}">修改</a>
+                            <a href="javascript:;" rel="${book.bisbn}" class="delete">删除</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+
             </tbody>
         </table>
 
@@ -77,7 +76,7 @@
                     window.location.href = "/delete?isbn=" + isbn;
                 }
             })
-        })();
+        });
     </script>
 </body>
 </html>

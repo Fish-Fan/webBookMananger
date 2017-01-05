@@ -1,6 +1,4 @@
-<%@ page import="entity.BookType" %>
-<%@ page import="java.util.List" %>
-<%@ page import="entity.Book" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -19,36 +17,35 @@
 </head>
 <body>
     <div class="container">
-        <%
-            List<BookType> bookTypeList = (List<BookType>) request.getAttribute("bookTypeList");
-            Book book = (Book) request.getAttribute("book");
-        %>
+
         <div class="col-md-4">
             <form action="/update" method="post" id="updateBookForm">
                 <label>ISBN:</label>
-                <input type="hidden" class="form-control" name="isbn" value="<%=book.getBisbn()%>">
+                <input type="hidden" class="form-control" name="isbn" value="${book.bisbn}">
 
                 <label>名称:</label>
-                <input type="text" class="form-control" name="name" value="<%=book.getBname()%>">
+                <input type="text" class="form-control" name="name" value="${book.bname}">
 
                 <label>作者:</label>
-                <input type="text" class="form-control" name="author" value="<%=book.getBauthor()%>">
+                <input type="text" class="form-control" name="author" value="${book.bauthor}">
 
                 <label>出版社名称:</label>
-                <input type="text" class="form-control" name="publisher" value="<%=book.getBpublisher()%>">
+                <input type="text" class="form-control" name="publisher" value="${book.bpublisher}">
 
                 <label>价格:</label>
-                <input type="text" class="form-control" name="price" value="<%=book.getBprice()%>">
+                <input type="text" class="form-control" name="price" value="${book.bprice}">
 
                 <select name="bookType">
-                    <%
-                        for(BookType bookType : bookTypeList){
-                    %>
-                    <option value="<%=bookType.getBook_type()%>" <%=book.getBcategory().equals(bookType.getBook_type()) ? "selected" : ""%>>
-                        <%=bookType.getBook_type()%>
-                    </option>
-                    <%}%>
+
+                    <c:forEach items="${bookTypeList}" var="bookType">
+                        <option value="${bookType.book_type}" ${bookType.book_type == book.bcategory ? "selected" : ""} >
+                        ${bookType.book_type}
+                        </option>
+                    </c:forEach>
+
+
                 </select>
+
                 <button class="btn btn-success">保存</button>
             </form>
         </div>

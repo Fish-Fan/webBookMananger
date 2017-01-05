@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -16,14 +17,14 @@
 </head>
 <body>
     <div class="container">
-        <%
-            String error = request.getParameter("error");
-            if("1".equals(error)){
-        %>
-        <div class="alert alert-danger">
-            您输入的账号或密码错误！
-        </div>
-        <%}%>
+
+        <c:if test="${param.error == 1}">
+            <div class="alert alert-danger">
+                您输入的账号或密码错误！
+            </div>
+        </c:if>
+
+
         <form action="/login" method="post" id="loginForm">
             <div class="col-md-4">
                 <div>
@@ -67,6 +68,7 @@
                 }
 
             });
+
 
         });
 

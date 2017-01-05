@@ -7,6 +7,7 @@ public class Account {
     private Integer id;
     private String username;
     private String password;
+    private Integer root;
 
     public Integer getId() {
         return id;
@@ -32,12 +33,21 @@ public class Account {
         this.password = password;
     }
 
+    public Integer getRoot() {
+        return root;
+    }
+
+    public void setRoot(Integer root) {
+        this.root = root;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", root=" + root +
                 '}';
     }
 }

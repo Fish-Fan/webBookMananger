@@ -10,6 +10,7 @@ public class Book {
     private String bpublisher;
     private Float bprice;
     private String bcategory;
+    private Integer bnum;
 
     public String getBisbn() {
         return bisbn;
@@ -59,6 +60,14 @@ public class Book {
         this.bcategory = bcategory;
     }
 
+    public Integer getBnum() {
+        return bnum;
+    }
+
+    public void setBnum(Integer bnum) {
+        this.bnum = bnum;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -68,6 +77,7 @@ public class Book {
                 ", bpublisher='" + bpublisher + '\'' +
                 ", bprice=" + bprice +
                 ", bcategory='" + bcategory + '\'' +
+                ", bnum=" + bnum +
                 '}';
     }
 }

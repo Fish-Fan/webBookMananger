@@ -18,9 +18,10 @@ public class BookDao {
     }
 
     public void updateBook(Book book){
-        String sql = "UPDATE book SET bname = ?,bauthor = ?,bpublisher = ?,bprice = ?,bcategory = ? WHERE bisbn = ?";
-        DBHelp.ExecuteUpdate(sql,book.getBname(),book.getBauthor(),book.getBpublisher(),book.getBprice(),book.getBcategory(),book.getBisbn());
+        String sql = "UPDATE book SET bname = ?,bauthor = ?,bpublisher = ?,bprice = ?,bcategory = ?,bnum = ? WHERE bisbn = ?";
+        DBHelp.ExecuteUpdate(sql,book.getBname(),book.getBauthor(),book.getBpublisher(),book.getBprice(),book.getBcategory(),book.getBnum(),book.getBisbn());
     }
+
 
     public void deleteBook(String isbn){
         String sql = "DELETE FROM book WHERE bisbn = ?";
@@ -35,6 +36,11 @@ public class BookDao {
     public Book findBookByName(String name){
         String sql = "SELECT * FROM book WHERE name = ?";
         return DBHelp.ExecuteQuery(sql,new BeanHandler(Book.class),name);
+    }
+
+    public Integer findBookNumByIsbn(String isbn){
+        String sql = "SELECT bnum FROM book WHERE bisbn = ?";
+        return DBHelp.ExecuteQuery(sql,new BeanHandler(Book.class),isbn);
     }
 
     public List<Book> findAllBook(){

@@ -48,4 +48,55 @@
         <servlet-name>UpdateServlet</servlet-name>
         <url-pattern>/update</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReaderListServlet</servlet-name>
+        <servlet-class>web.ReaderListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReaderListServlet</servlet-name>
+        <url-pattern>/readerList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BorrowServlet</servlet-name>
+        <servlet-class>web.BorrowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BorrowServlet</servlet-name>
+        <url-pattern>/borrow</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CurrentBorrowServlet</servlet-name>
+        <servlet-class>web.CurrentBorrowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CurrentBorrowServlet</servlet-name>
+        <url-pattern>/currentBorrow</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteCurrentServlet</servlet-name>
+        <servlet-class>web.DeleteCurrentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCurrentServlet</servlet-name>
+        <url-pattern>/deleteCurrent</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+
+
+    <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config>
+
+    <error-page>
+        <location>/notFoundError.jsp</location>
+    </error-page>
 </web-app>

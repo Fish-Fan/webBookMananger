@@ -1,5 +1,4 @@
-<%@ page import="entity.BookType" %>
-<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -18,28 +17,34 @@
 </head>
 <body>
     <div class="container">
-        <%
-            List<BookType> bookTypeList = (List<BookType>) request.getAttribute("bookTypeList");
-        %>
+
         <div class="col-md-4">
             <form action="/new" method="post" id="newBookForm">
                 <label>ISBN:</label>
                 <input type="text" class="form-control" name="isbn">
+
                 <label>名称:</label>
                 <input type="text" class="form-control" name="name">
+
                 <label>作者:</label>
                 <input type="text" class="form-control" name="author">
+
                 <label>出版社名称:</label>
                 <input type="text" class="form-control" name="publisher">
+
                 <label>价格:</label>
                 <input type="text" class="form-control" name="price">
+
                 <select name="bookType">
-                    <%
-                        for(BookType bookType : bookTypeList){
-                    %>
-                    <option value="<%=bookType.getBook_type()%>"><%=bookType.getBook_type()%></option>
-                    <%}%>
+
+                    <c:forEach items="${bookTypeList}" var="bookType">
+                        <option value="${bookType.book_type}">${bookType.book_type}</option>
+                    </c:forEach>
+
                 </select>
+
+                <label>库存数量:</label>
+                <input type="text" class="form-control" name="bookNum" placeholder="不填写此字段默认库存为0">
                 <button class="btn btn-success">保存</button>
             </form>
         </div>
@@ -69,6 +74,9 @@
                     price:{
                         required:true,
                         min:0
+                    },
+                    bookNum:{
+                        min:0
                     }
                 },
                 messages:{
@@ -90,7 +98,11 @@
                     price:{
                         required:"请输入添加图书的价格",
                         min:"价格不能低于0"
+                    },
+                    bookNum:{
+                        min:"最小数量不得低于0"
                     }
+
                 }
             });
         });
