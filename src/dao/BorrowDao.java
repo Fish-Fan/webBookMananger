@@ -17,8 +17,8 @@ public class BorrowDao {
     }
 
     public void updateBorrow(Borrow borrow){
-        String sql = "UPDATE borrow SET startdate = ?,enddate = ?,fine = ?";
-        DBHelp.ExecuteUpdate(sql,borrow.getStartdate(),borrow.getEnddate(),borrow.getFine());
+        String sql = "UPDATE borrow SET startdate = ?,enddate = ?,fine = ?,ispay = ? WHERE rno = ? AND bisbn = ?";
+        DBHelp.ExecuteUpdate(sql,borrow.getStartdate(),borrow.getEnddate(),borrow.getFine(),borrow.getIspay(),borrow.getRno(),borrow.getBisbn());
     }
 
     public void deleteBorrow(String rno,String bisbn){
@@ -26,9 +26,9 @@ public class BorrowDao {
         DBHelp.ExecuteUpdate(sql,rno,bisbn);
     }
 
-    public Borrow findBorrowByRnoBisbn(String rno,String bisbn){
-        String sql = "SELECT * FROM borrow WHERE rno = ? AND bibn = ?";
-        return DBHelp.ExecuteQuery(sql,new BeanHandler(Borrow.class),rno,bisbn);
+    public List<Borrow> findBorrowByRnoBisbn(String rno,String bisbn){
+        String sql = "SELECT * FROM borrow WHERE rno = ? AND bisbn = ?";
+        return DBHelp.ExecuteQueryAll(sql,new BeanListHandler(Borrow.class),rno,bisbn);
     }
 
     public List<Borrow> findAllBorrow(){

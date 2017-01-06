@@ -85,7 +85,32 @@
         <url-pattern>/deleteCurrent</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AllBorrowsServlet</servlet-name>
+        <servlet-class>web.AllBorrowsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllBorrowsServlet</servlet-name>
+        <url-pattern>/allBorrows</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UpdateBorrowServlet</servlet-name>
+        <servlet-class>web.UpdateBorrowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateBorrowServlet</servlet-name>
+        <url-pattern>/updateBorrow</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteBorrowServlet</servlet-name>
+        <servlet-class>web.DeleteBorrowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBorrowServlet</servlet-name>
+        <url-pattern>/deleteBorrow</url-pattern>
+    </servlet-mapping>
 
 
 

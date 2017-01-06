@@ -9,6 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../../css/bootstrap.css">
+    <style>
+        .btnCheckAllBorr{
+            width: 20%;
+            height: 40px;
+            line-height: 26px;
+            display: block;
+            margin: 30px auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -65,6 +74,7 @@
 
             </tbody>
         </table>
+        <a href="/allBorrows" class="btn btn-primary btnCheckAllBorr">查看全部借阅记录</a>
 
     </div>
     <script src="../../js/jQuery%201.9.1.js"></script>
