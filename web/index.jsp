@@ -24,6 +24,17 @@
             </div>
         </c:if>
 
+        <c:if test="${param.state == 1}">
+            <div class="alert alert-danger">
+                请登录后完成操作
+            </div>
+        </c:if>
+
+        <c:if test="${param.state == 2}">
+            <div class="alert alert-success">
+                退出登录成功
+            </div>
+        </c:if>
 
         <form action="/login" method="post" id="loginForm">
             <div class="col-md-4">

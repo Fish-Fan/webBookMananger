@@ -24,6 +24,7 @@
         <div class="well">
 
             <h1>Welcome,${account.username}</h1>
+            <a href="/signout" class="btn btn-primary float-right">退出登录</a>
         </div>
         <div class="container-fluid">
             <a href="/new" class="btn bg-primary">新增图书</a>

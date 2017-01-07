@@ -28,6 +28,7 @@
 
     <div class="well">
         <h1 class="text-center">Welcome!${reader.rname}</h1>
+        <a href="/signout" class="btn btn-primary right">退出登录</a>
     </div>
 
 

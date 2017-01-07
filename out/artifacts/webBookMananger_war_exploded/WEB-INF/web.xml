@@ -4,124 +4,20 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>web.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ListServlet</servlet-name>
-        <servlet-class>web.ListServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ListServlet</servlet-name>
-        <url-pattern>/list</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>web.DeleteServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteServlet</servlet-name>
-        <url-pattern>/delete</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>web.NewServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/new</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>web.UpdateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UpdateServlet</servlet-name>
-        <url-pattern>/update</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ReaderListServlet</servlet-name>
-        <servlet-class>web.ReaderListServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ReaderListServlet</servlet-name>
-        <url-pattern>/readerList</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>BorrowServlet</servlet-name>
-        <servlet-class>web.BorrowServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>BorrowServlet</servlet-name>
-        <url-pattern>/borrow</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>CurrentBorrowServlet</servlet-name>
-        <servlet-class>web.CurrentBorrowServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CurrentBorrowServlet</servlet-name>
-        <url-pattern>/currentBorrow</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DeleteCurrentServlet</servlet-name>
-        <servlet-class>web.DeleteCurrentServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteCurrentServlet</servlet-name>
-        <url-pattern>/deleteCurrent</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>AllBorrowsServlet</servlet-name>
-        <servlet-class>web.AllBorrowsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AllBorrowsServlet</servlet-name>
-        <url-pattern>/allBorrows</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UpdateBorrowServlet</servlet-name>
-        <servlet-class>web.UpdateBorrowServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UpdateBorrowServlet</servlet-name>
-        <url-pattern>/updateBorrow</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DeleteBorrowServlet</servlet-name>
-        <servlet-class>web.DeleteBorrowServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteBorrowServlet</servlet-name>
-        <url-pattern>/deleteBorrow</url-pattern>
-    </servlet-mapping>
-
-
-
-
-
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>web.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>
 
-    <error-page>
-        <location>/notFoundError.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<location>/notFoundError.jsp</location>-->
+    <!--</error-page>-->
 </web-app>
