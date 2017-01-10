@@ -17,6 +17,10 @@
             height: 40px;
             margin: 30px auto;
         }
+        .avatar{
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -27,8 +31,11 @@
     </c:if>
 
     <div class="well">
-        <h1 class="text-center">Welcome!${reader.rname}</h1>
+        <h1 class="text-center">Welcome!</h1>
+        <img src="/avatar?key=${sessionScope.account.UUID}" class="avatar">
+        ${reader.rname}
         <a href="/signout" class="btn btn-primary right">退出登录</a>
+        <a href="/updateUserFile" class="btn btn-danger">修改个人资料</a>
     </div>
 
 

@@ -17,8 +17,8 @@ public class AccountDao {
     }
 
     public void updateAccount(Account account){
-        String sql = "UPDATE account SET username = ?,password = ?";
-        DBHelp.ExecuteUpdate(sql,account.getUsername(),account.getPassword());
+        String sql = "UPDATE account SET username = ?,password = ?,UUID = ? WHERE id = ?";
+        DBHelp.ExecuteUpdate(sql,account.getUsername(),account.getPassword(),account.getUUID(),account.getId());
     }
 
     public void deleteAccount(Integer id){

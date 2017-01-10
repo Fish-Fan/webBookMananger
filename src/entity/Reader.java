@@ -8,7 +8,7 @@ public class Reader {
     private String rname;
     private String rgender;
     private String rage;
-    private String rspecilty;
+    private String rspecialty;
     private String rpassword;
 
     public String getRno() {
@@ -43,12 +43,12 @@ public class Reader {
         this.rage = rage;
     }
 
-    public String getRspecilty() {
-        return rspecilty;
+    public String getRspecialty() {
+        return rspecialty;
     }
 
-    public void setRspecilty(String rspecilty) {
-        this.rspecilty = rspecilty;
+    public void setRspecialty(String rspecialty) {
+        this.rspecialty = rspecialty;
     }
 
     public String getRpassword() {
@@ -66,7 +66,7 @@ public class Reader {
                 ", rname='" + rname + '\'' +
                 ", rgender='" + rgender + '\'' +
                 ", rage='" + rage + '\'' +
-                ", rspecilty='" + rspecilty + '\'' +
+                ", rspecilty='" + rspecialty + '\'' +
                 ", rpassword='" + rpassword + '\'' +
                 '}';
     }

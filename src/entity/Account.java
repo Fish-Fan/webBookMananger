@@ -8,6 +8,7 @@ public class Account {
     private String username;
     private String password;
     private Integer root;
+    private String UUID;
 
     public Integer getId() {
         return id;
@@ -41,6 +42,14 @@ public class Account {
         this.root = root;
     }
 
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -48,6 +57,7 @@ public class Account {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", root=" + root +
+                ", UUID='" + UUID + '\'' +
                 '}';
     }
 }

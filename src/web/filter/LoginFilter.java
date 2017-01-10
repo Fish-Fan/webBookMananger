@@ -21,7 +21,6 @@ public class LoginFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        System.out.println(url);
 
         if(url.startsWith("/img/") || url.startsWith("/css/") || url.startsWith("/js/") || "/".equals(url) || url.startsWith("/index.jsp") || "notFountError.jsp".equals(url) || "/login".equals(url)){
             filterChain.doFilter(request,response);

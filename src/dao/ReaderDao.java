@@ -15,12 +15,12 @@ import java.util.List;
 public class ReaderDao {
     public void addReader(Reader reader){
         String sql = "INSERT INTO reader(rno,rname,rgender,rage,rspecialty,rpassword) VALUES(?,?,?,?,?,?)";
-        DBHelp.ExecuteUpdate(sql,reader.getRno(),reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecilty(),reader.getRpassword());
+        DBHelp.ExecuteUpdate(sql,reader.getRno(),reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecialty(),reader.getRpassword());
     }
 
     public void updateReader(Reader reader){
-        String sql = "UPDATE reader SET rname = ?,rgender = ?,rage = ?,rspecialty,rpassword = ?";
-        DBHelp.ExecuteUpdate(sql,reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecilty(),reader.getRpassword());
+        String sql = "UPDATE reader SET rname = ?,rgender = ?,rage = ?,rspecialty = ?,rpassword = ? WHERE rno = ?";
+        DBHelp.ExecuteUpdate(sql,reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecialty(),reader.getRpassword(),reader.getRno());
     }
 
     public void deleteReader(String rno){
