@@ -16,6 +16,8 @@
             <h1>书籍借阅记录表</h1>
         </div>
 
+        <a href="/list" class="btn btn-primary">返回上一级</a>
+
         <table class="table">
             <thead>
                 <tr>

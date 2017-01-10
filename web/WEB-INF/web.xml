@@ -27,6 +27,6 @@
     </session-config>
 
     <!--<error-page>-->
-        <!--<location>/notFoundError.jsp</location>-->
+    <!--<location>/notFoundError.jsp</location>-->
     <!--</error-page>-->
 </web-app>

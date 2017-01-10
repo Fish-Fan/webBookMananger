@@ -3,10 +3,8 @@ package web;
 import dao.BookDao;
 import dao.BorrowDao;
 import dao.CurrentBorrowDao;
-import entity.Account;
-import entity.Book;
-import entity.Borrow;
-import entity.CurrentBorrow;
+import dao.ReaderDao;
+import entity.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,14 +61,19 @@ public class BorrowServlet extends HttpServlet {
         String startdate = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE);
 
 
+
         CurrentBorrowDao currentBorrowDao = new CurrentBorrowDao();
         BorrowDao borrowDao = new BorrowDao();
+        ReaderDao readerDao = new ReaderDao();
+
+        Reader reader = readerDao.findReaderByRno(rno);
 
         //按rno删除currentBorrow表中的数据,将删除的数据插入到borrow表中
         List<CurrentBorrow> currentBorrowList = currentBorrowDao.findCurrentBorrowByRno(rno);
         for(CurrentBorrow currentBorrow : currentBorrowList)
         {
             Integer bnum = currentBorrow.getBnum();
+            reader.setrBorrowCount((reader.getrBorrowCount() + bnum));
             for(int i = 0;i < bnum;i++)
             {
                 Borrow borrow = new Borrow();
@@ -82,9 +85,10 @@ public class BorrowServlet extends HttpServlet {
                 borrowDao.addBorrow(borrow);
                 currentBorrowDao.deleteCurrentBorrow(rno);
 
-
-
             }
+
+
+            readerDao.updateReader(reader);
         }
 
         resp.sendRedirect("/readerList?success=1");

@@ -8,7 +8,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <style>
         .btnCheckAllBorr{
             width: 20%;
@@ -76,6 +76,7 @@
             </tbody>
         </table>
         <a href="/allBorrows" class="btn btn-primary btnCheckAllBorr">查看全部借阅记录</a>
+        <a href="/allReaders" class="btn btn-primary btnCheckAllBorr">查看全部读者信息</a>
 
     </div>
     <script src="../../js/jQuery%201.9.1.js"></script>

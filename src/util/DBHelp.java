@@ -4,6 +4,7 @@ import entity.Book;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -45,6 +46,21 @@ public class DBHelp {
         QueryRunner runner = new QueryRunner();
         try {
             return (List<T>) runner.query(connection,sql,beanListHandler,pram);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            Close(connection);
+        }
+        return null;
+    }
+
+    public static <T> T ExecuteSingle( String sql, ScalarHandler scalarHandler,Object...param){
+        Connection connection = ConnectionMananger.getConnection();
+        QueryRunner runner = new QueryRunner();
+        ScalarHandler<T> h = scalarHandler;
+        try {
+            return runner.query(connection,sql,h,param);
         } catch (SQLException e) {
             e.printStackTrace();
         }

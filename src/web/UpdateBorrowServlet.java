@@ -1,7 +1,9 @@
 package web;
 
 import dao.BorrowDao;
+import dao.ReaderDao;
 import entity.Borrow;
+import entity.Reader;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +34,7 @@ public class UpdateBorrowServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ReaderDao readerDao = new ReaderDao();
         BorrowDao borrowDao = new BorrowDao();
 
         String rno = req.getParameter("rno");
@@ -51,6 +54,12 @@ public class UpdateBorrowServlet extends HttpServlet {
         borrow.setFine(fine);
         borrow.setIspay(ispay);
 
+        Reader reader = readerDao.findReaderByRno(rno);
+
+        Double fines = reader.getrBorrowFine() + new Double(fine);
+        reader.setrBorrowFine(fines);
+
+        readerDao.updateReader(reader);
         borrowDao.updateBorrow(borrow);
 
         resp.sendRedirect("/allBorrows");

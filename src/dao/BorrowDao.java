@@ -3,6 +3,7 @@ package dao;
 import entity.Borrow;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import util.DBHelp;
 
 import java.util.List;
@@ -25,6 +26,8 @@ public class BorrowDao {
         String sql = "DELETE FROM borrow WHERE rno = ? AND bisbn = ?";
         DBHelp.ExecuteUpdate(sql,rno,bisbn);
     }
+
+
 
     public List<Borrow> findBorrowByRnoBisbn(String rno,String bisbn){
         String sql = "SELECT * FROM borrow WHERE rno = ? AND bisbn = ?";

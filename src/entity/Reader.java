@@ -1,5 +1,7 @@
 package entity;
 
+import dao.BorrowDao;
+
 /**
  * Created by yanfeng-mac on 2017/1/4.
  */
@@ -10,6 +12,12 @@ public class Reader {
     private String rage;
     private String rspecialty;
     private String rpassword;
+    private String ruuid;
+
+    private Double rBorrowCount;
+    private Double rBorrowFine;
+
+
 
     public String getRno() {
         return rno;
@@ -59,6 +67,30 @@ public class Reader {
         this.rpassword = rpassword;
     }
 
+    public String getRuuid() {
+        return ruuid;
+    }
+
+    public void setRuuid(String ruuid) {
+        this.ruuid = ruuid;
+    }
+
+    public Double getrBorrowCount() {
+        return rBorrowCount;
+    }
+
+    public void setrBorrowCount(Double rBorrowCount) {
+        this.rBorrowCount = rBorrowCount;
+    }
+
+    public Double getrBorrowFine() {
+        return rBorrowFine;
+    }
+
+    public void setrBorrowFine(Double rBorrowFine) {
+        this.rBorrowFine = rBorrowFine;
+    }
+
     @Override
     public String toString() {
         return "Reader{" +
@@ -66,8 +98,9 @@ public class Reader {
                 ", rname='" + rname + '\'' +
                 ", rgender='" + rgender + '\'' +
                 ", rage='" + rage + '\'' +
-                ", rspecilty='" + rspecialty + '\'' +
+                ", rspecialty='" + rspecialty + '\'' +
                 ", rpassword='" + rpassword + '\'' +
+                ", ruuid='" + ruuid + '\'' +
                 '}';
     }
 }

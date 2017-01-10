@@ -4,6 +4,7 @@ import com.sun.org.apache.regexp.internal.RE;
 import entity.Reader;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import util.DBHelp;
 import web.ListServlet;
 
@@ -14,13 +15,13 @@ import java.util.List;
  */
 public class ReaderDao {
     public void addReader(Reader reader){
-        String sql = "INSERT INTO reader(rno,rname,rgender,rage,rspecialty,rpassword) VALUES(?,?,?,?,?,?)";
-        DBHelp.ExecuteUpdate(sql,reader.getRno(),reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecialty(),reader.getRpassword());
+        String sql = "INSERT INTO reader(rno,rname,rgender,rage,rspecialty,rpassword,ruuid) VALUES(?,?,?,?,?,?,?)";
+        DBHelp.ExecuteUpdate(sql,reader.getRno(),reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecialty(),reader.getRpassword(),reader.getRuuid());
     }
 
     public void updateReader(Reader reader){
-        String sql = "UPDATE reader SET rname = ?,rgender = ?,rage = ?,rspecialty = ?,rpassword = ? WHERE rno = ?";
-        DBHelp.ExecuteUpdate(sql,reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecialty(),reader.getRpassword(),reader.getRno());
+        String sql = "UPDATE reader SET rname = ?,rgender = ?,rage = ?,rspecialty = ?,rpassword = ? ,ruuid = ?,rBorrowCount = ?,rBorrowFine = ? WHERE rno = ?";
+        DBHelp.ExecuteUpdate(sql,reader.getRname(),reader.getRgender(),reader.getRage(),reader.getRspecialty(),reader.getRpassword(),reader.getRuuid(),reader.getrBorrowCount(),reader.getrBorrowFine(),reader.getRno());
     }
 
     public void deleteReader(String rno){
@@ -46,5 +47,15 @@ public class ReaderDao {
     public List<Reader> findReaderByLike(String rname){
         String sql = "SELECT * FROM reader WHERE rname LIKE CONCAT('%',?,'%')";
         return DBHelp.ExecuteQueryAll(sql,new BeanListHandler(Reader.class),rname);
+    }
+
+    public Double findSumFineByRno(String rno){
+        String sql = "SELECT rBorrowCount FROM borrow WHERE rno = ?";
+        return DBHelp.ExecuteSingle(sql,new ScalarHandler(),rno);
+    }
+
+    public Double findBorrowCountByRno(String rno){
+        String sql = "SELECT rBorrowFine FROM borrow WHERE rno = ?";
+        return DBHelp.ExecuteSingle(sql,new ScalarHandler(),rno);
     }
 }
